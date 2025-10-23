@@ -13,130 +13,105 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
-
+  <!-- Tailwind CSS (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'system-ui', 'Segoe UI', 'Roboto', 'sans-serif'] },
+          colors: {
+            ink: '#001219',
+            deep: '#005F73',
+            teal: '#0A9396',
+            mint: '#94D2BD',
+            sand: '#E9D8A6',
+            amber: '#EE9B00',
+            rust: '#CA6702',
+            brick: '#BB3E03',
+            crimson: '#AE2012',
+            wine: '#9B2226',
+            textc: '#E6F2EF',
+            card: '#02222B',
+          },
+          boxShadow: {
+            'soft': '0 12px 28px rgba(0,0,0,.25)'
+          },
+          backdropBlur: {
+            xs: '6px'
+          }
+        }
+      }
+    }
+  </script>
   <style>
-    :root {
-      --c-ink:#001219;
-      --c-deep:#005F73;
-      --c-teal:#0A9396;
-      --c-mint:#94D2BD;
-      --c-sand:#E9D8A6;
-      --c-amber:#EE9B00;
-      --c-rust:#CA6702;
-      --c-brick:#BB3E03;
-      --c-crimson:#AE2012;
-      --c-wine:#9B2226;
-      --text:#E6F2EF;
-      --muted:#F4F4F4; 
-      --card:#02222B;
-    }
-
     html { scroll-behavior: smooth; }
-    body {
-      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
-      background: var(--c-ink);
-      color: var(--text);
-      line-height: 1.6;
-    }
-
-    /* Navbar */
-    .navbar { background: rgba(0,18,25,0.85); backdrop-filter: saturate(120%) blur(8px); }
-    .navbar .nav-link { color: var(--muted); font-weight: 500; }
-    .navbar .nav-link.active, .navbar .nav-link:hover { color: var(--c-sand); }
-    .brand-accent { color: var(--c-amber); }
-
-    /* Hero */
-    .hero {
-      padding-top: 7rem; padding-bottom: 4rem;
-      background: radial-gradient(1200px 600px at 90% -10%, rgba(10,147,150,0.25), transparent),
-                  radial-gradient(900px 500px at 10% 10%, rgba(238,155,0,0.15), transparent);
-    }
-    .hero h1 { font-weight: 700; letter-spacing: .2px; }
-    .hero p.lead { color: var(--muted); max-width: 56ch; }
-
-    /* Tarjetas */
-    .soft-card { background: var(--card); border: 1px solid rgba(148,210,189,0.15); border-radius: 1rem; transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
-    .soft-card:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(0,0,0,.25); border-color: rgba(238,155,0,.35); }
-
-    /* Títulos */
-    .section-title { font-weight: 700; letter-spacing: .3px; }
-    .section-kicker { color: var(--c-mint); text-transform: uppercase; font-size: .85rem; letter-spacing: .18rem; }
-
-    .about .bi { font-size: 1.2rem; color: var(--c-amber); }
-
-    /* Habilidades */
-    .skill-badge { display:inline-flex; align-items:center; gap:.5rem; background: rgba(148,210,189,0.12); border: 1px solid rgba(148,210,189,0.25); padding:.5rem .75rem; border-radius:.75rem; font-weight:600; }
-    .skill-badge .dot { width:.6rem; height:.6rem; border-radius:50%; background: var(--c-amber); display:inline-block; }
-
-    /* Carrusel */
-    .tech-figure { width: 120px; height: 120px; border-radius: 1rem; background: linear-gradient(145deg, rgba(10,147,150,.15), rgba(148,210,189,.08)); border: 1px solid rgba(148,210,189,.25); display:flex; align-items:center; justify-content:center; }
-    .tech-figure span { font-weight:700; }
-
-    /* Contacto */
-    .contact-list .bi { font-size: 1.25rem; }
-    .contact-list a { color: var(--text); text-decoration: none; border-bottom: 1px dashed rgba(238,155,0,.6); }
-    .contact-list a:hover { color: var(--c-sand); border-bottom-color: var(--c-sand); }
-
-    /* Footer */
-    footer { color: var(--muted); border-top: 1px solid rgba(148,210,189,0.15); }
-
-    .accent { color: var(--c-amber); }
-    .btn-accent { background: var(--c-amber); color:#0b0b0b; border:none; }
-    .btn-accent:hover { background: #ffae1a; color:#0b0b0b; }
-
-    section { padding-top: 4rem; padding-bottom: 4rem; }
-    @media (max-width: 576px) { .hero { padding-top: 6rem; } }
   </style>
 </head>
-<body data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="80" tabindex="0">
-
+<body class="bg-ink text-textc leading-relaxed antialiased">
   <!-- Navbar -->
-  <nav id="mainNav" class="navbar navbar-expand-lg navbar-dark fixed-top">
-    <div class="container">
-      <a class="navbar-brand fw-semibold" href="#inicio">
-        Rodrigo <span class="brand-accent">Corvalán</span>
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navContent" aria-controls="navContent" aria-expanded="false" aria-label="Alternar navegación">
-        <span class="navbar-toggler-icon"></span>
+  <header class="sticky top-0 z-50 backdrop-blur-xs bg-ink/80 border-b border-mint/20">
+    <nav class="max-w-6xl mx-auto flex items-center justify-between px-4 py-3">
+      <a href="#inicio" class="font-semibold">Rodrigo <span class="text-amber">Corvalán</span></a>
+      <button id="navToggle" class="sm:hidden inline-flex items-center justify-center rounded-xl border border-mint/30 px-3 py-2" aria-label="Abrir menú">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
       </button>
-      <div class="collapse navbar-collapse" id="navContent">
-        <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
-          <li class="nav-item"><a class="nav-link" href="#inicio">Inicio</a></li>
-          <li class="nav-item"><a class="nav-link" href="#sobre-mi">Sobre mí</a></li>
-          <li class="nav-item"><a class="nav-link" href="#habilidades">Habilidades</a></li>
-          <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
-        </ul>
-      </div>
+      <ul id="navItems" class="hidden sm:flex gap-4 items-center text-sm">
+        <li><a class="hover:text-sand" href="#inicio">Inicio</a></li>
+        <li><a class="hover:text-sand" href="#sobre-mi">Sobre mí</a></li>
+        <li><a class="hover:text-sand" href="#habilidades">Habilidades</a></li>
+        <li><a class="hover:text-sand" href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+    <div id="navDrawer" class="sm:hidden hidden border-t border-mint/20 bg-ink/90">
+      <ul class="max-w-6xl mx-auto px-4 py-2 space-y-2">
+        <li><a class="block py-2 hover:text-sand" href="#inicio">Inicio</a></li>
+        <li><a class="block py-2 hover:text-sand" href="#sobre-mi">Sobre mí</a></li>
+        <li><a class="block py-2 hover:text-sand" href="#habilidades">Habilidades</a></li>
+        <li><a class="block py-2 hover:text-sand" href="#contacto">Contacto</a></li>
+      </ul>
     </div>
-  </nav>
+  </header>
 
   <!-- Hero -->
-  <header id="inicio" class="hero">
-    <div class="container">
-      <div class="row align-items-center g-4">
-        <div class="col-12 col-lg-7">
-          <span class="section-kicker">Portafolio</span>
-          <h1 class="display-5 mt-2">Operaciones TI, Bases de Datos y Desarrollo — <span class="accent">con enfoque en continuidad operativa</span>.</h1>
-          <p class="lead mt-3">Integro prácticas de operaciones, automatización y desarrollo para construir soluciones estables, medibles y simples de mantener. Este es un vistazo a quién soy y cómo trabajo.</p>
-          <div class="d-flex gap-2 mt-3">
-            <a class="btn btn-accent btn-lg" href="#habilidades"><i class="bi bi-lightning-charge me-2"></i>Ver habilidades</a>
-            <a class="btn btn-outline-light btn-lg" href="#contacto"><i class="bi bi-send me-2"></i>Contacto</a>
+  <section id="inicio" class="relative overflow-hidden pt-24 pb-16 sm:pt-28 sm:pb-20 scroll-mt-24">
+    <div class="pointer-events-none absolute inset-0 opacity-70">
+      <div class="absolute -top-32 right-[-10%] h-[500px] w-[900px] rounded-full bg-teal/20 blur-3xl"></div>
+      <div class="absolute top-10 left-[-20%] h-[400px] w-[700px] rounded-full bg-amber/20 blur-3xl"></div>
+    </div>
+    <div class="relative max-w-6xl mx-auto px-4">
+      <div class="grid lg:grid-cols-12 gap-8 items-center">
+        <div class="lg:col-span-7">
+          <span class="uppercase tracking-[0.18rem] text-xs text-mint">Portafolio</span>
+          <h1 class="mt-2 text-3xl sm:text-4xl font-bold">Operaciones TI, Bases de Datos y Desarrollo — <span class="text-amber">con enfoque en continuidad operativa</span>.</h1>
+          <p class="mt-3 text-mint/90 max-w-prose">Integro prácticas de operaciones, automatización y desarrollo para construir soluciones estables, medibles y simples de mantener. Este es un vistazo a quién soy y cómo trabajo.</p>
+          <div class="mt-4 flex flex-wrap gap-3">
+            <a href="#habilidades" class="inline-flex items-center gap-2 rounded-xl bg-amber text-ink font-semibold px-4 py-2 hover:brightness-110">
+              <!-- icono rayo -->
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M7 2h10l-6 8h6l-10 12 2-10H5l2-10z"/></svg>
+              Ver habilidades
+            </a>
+            <a href="#contacto" class="inline-flex items-center gap-2 rounded-xl border border-textc/40 px-4 py-2 hover:bg-textc/10">
+              <!-- icono enviar -->
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M2.01 21 23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+              Contacto
+            </a>
           </div>
         </div>
-        <div class="col-12 col-lg-5">
-          <div class="soft-card p-4 h-100">
-            <div class="d-flex align-items-center gap-3">
-              <div class="tech-figure flex-shrink-0" aria-hidden="true"><i class="bi bi-cpu fs-1"></i></div>
+        <div class="lg:col-span-5">
+          <div class="bg-card/90 border border-mint/20 rounded-2xl p-5 shadow-soft">
+            <div class="flex items-center gap-4">
+              <div class="h-24 w-24 rounded-xl grid place-items-center bg-gradient-to-br from-teal/20 to-mint/10 border border-mint/30 flex-shrink-0">
+                <!-- icono cpu -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-12 w-12" fill="currentColor"><path d="M9 2h2v3h2V2h2v3h3v2h3v2h-3v2h3v2h-3v2h3v2h-3v3h-2v-3h-2v3h-2v-3H9v3H7v-3H4v-2H1v-2h3v-2H1V9h3V7H1V5h3V2h2v3h2V2zm-2 7v6h10V9z"/></svg>
+              </div>
               <div>
-                <h2 class="h4 mb-1">Rodrigo Corvalán</h2>
-                <p class="mb-0">Ingeniero en Informática · Jefe de Operaciones</p>
+                <h2 class="text-lg font-semibold">Rodrigo Corvalán</h2>
+                <p class="text-sm">Ingeniero en Informática · Jefe de Operaciones</p>
               </div>
             </div>
-            <hr class="text-white-50">
-            <ul class="mb-0 small">
+            <hr class="my-4 border-mint/20">
+            <ul class="text-sm space-y-2">
               <li>Continuidad operativa, monitoreo, respaldos.</li>
               <li>DBA práctico (SQL Server, PostgreSQL, MySQL) y desarrollo (Node.js, C#).</li>
               <li>Infraestructura on-premise e híbrida (Hyper-V, firewalling, correo IMAP).</li>
@@ -145,19 +120,20 @@
         </div>
       </div>
     </div>
-  </header>
+  </section>
 
   <!-- Sobre mí -->
-  <section id="sobre-mi" class="about">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-lg-10">
-          <div class="soft-card p-4 p-md-5">
-            <div class="d-flex align-items-center gap-2 mb-2">
-              <i class="bi bi-person-circle"></i>
-              <span class="section-kicker">Sobre mí</span>
+  <section id="sobre-mi" class="scroll-mt-24 py-12">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="grid place-items-center">
+        <div class="w-full lg:w-5/6">
+          <div class="bg-card/90 border border-mint/20 rounded-2xl p-6 md:p-8 shadow-soft">
+            <div class="flex items-center gap-2 mb-2">
+              <!-- icono persona -->
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-amber" viewBox="0 0 20 20" fill="currentColor"><path d="M10 10a4 4 0 100-8 4 4 0 000 8zm-7 8a7 7 0 1114 0H3z"/></svg>
+              <span class="uppercase tracking-[0.18rem] text-xs text-mint">Sobre mí</span>
             </div>
-            <h2 class="section-title h3 mb-3">Para conocerme un poco</h2>
+            <h2 class="text-xl font-bold mb-3">Para conocerme un poco</h2>
             <p class="mb-2">Tengo 25 años y soy un entusiasta del mundo de los videojuegos y la tecnología.<br>
             En mi tiempo libre disfruto aprender sobre distintos temas más allá de la informática, como la divulgación científica y el cine, especialmente el de animación.<br>
            Soy Ingeniero en Informática con experiencia en el área de Operaciones, enfocado en la continuidad operativa.<br>
@@ -170,108 +146,99 @@
   </section>
 
   <!-- Habilidades -->
-  <section id="habilidades">
-    <div class="container">
-      <div class="row justify-content-center mb-4">
-        <div class="col-lg-10">
-          <div class="d-flex align-items-center gap-2 mb-2">
-            <i class="bi bi-stars text-warning"></i>
-            <span class="section-kicker">Habilidades</span>
+  <section id="habilidades" class="scroll-mt-24 py-12">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="grid place-items-center mb-6">
+        <div class="w-full lg:w-5/6">
+          <div class="flex items-center gap-2 mb-2">
+            <!-- icono estrellas -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <span class="uppercase tracking-[0.18rem] text-xs text-mint">Habilidades</span>
           </div>
-          <h2 class="section-title h3 mb-3">Herramientas de desarrollo</h2>
-          <p class="mb-0">Tecnologías que he utilizado en proyectos y operaciones del día a día.</p>
+          <h2 class="text-xl font-bold mb-1">Herramientas de desarrollo</h2>
+          <p class="text-mint/90">Tecnologías que he utilizado en proyectos y operaciones del día a día.</p>
         </div>
       </div>
 
       <!-- Badges de habilidades -->
-      <div class="row justify-content-center">
-        <div class="col-lg-10">
-          <div class="d-flex flex-wrap gap-2 mb-4">
-            <span class="skill-badge"><span class="dot"></span> PHP</span>
-            <span class="skill-badge"><span class="dot"></span> MySQL</span>
-            <span class="skill-badge"><span class="dot"></span> SQL Server</span>
-            <span class="skill-badge"><span class="dot"></span> PostgreSQL</span>
-            <span class="skill-badge"><span class="dot"></span> C#</span>
-            <span class="skill-badge"><span class="dot"></span> Node.js</span>
+      <div class="grid place-items-center mb-8">
+        <div class="w-full lg:w-5/6">
+          <div class="flex flex-wrap gap-2">
+            <span class="inline-flex items-center gap-2 bg-mint/10 border border-mint/30 px-3 py-2 rounded-xl font-semibold text-sm"><span class="inline-block h-2.5 w-2.5 rounded-full bg-amber"></span> PHP</span>
+            <span class="inline-flex items-center gap-2 bg-mint/10 border border-mint/30 px-3 py-2 rounded-xl font-semibold text-sm"><span class="inline-block h-2.5 w-2.5 rounded-full bg-amber"></span> MySQL</span>
+            <span class="inline-flex items-center gap-2 bg-mint/10 border border-mint/30 px-3 py-2 rounded-xl font-semibold text-sm"><span class="inline-block h-2.5 w-2.5 rounded-full bg-amber"></span> SQL Server</span>
+            <span class="inline-flex items-center gap-2 bg-mint/10 border border-mint/30 px-3 py-2 rounded-xl font-semibold text-sm"><span class="inline-block h-2.5 w-2.5 rounded-full bg-amber"></span> PostgreSQL</span>
+            <span class="inline-flex items-center gap-2 bg-mint/10 border border-mint/30 px-3 py-2 rounded-xl font-semibold text-sm"><span class="inline-block h-2.5 w-2.5 rounded-full bg-amber"></span> C#</span>
+            <span class="inline-flex items-center gap-2 bg-mint/10 border border-mint/30 px-3 py-2 rounded-xl font-semibold text-sm"><span class="inline-block h-2.5 w-2.5 rounded-full bg-amber"></span> Node.js</span>
           </div>
         </div>
       </div>
 
-      <!-- Carrusel de tecnologías -->
-      <div class="row justify-content-center">
-        <div class="col-lg-8">
-          <div id="techCarousel" class="carousel slide soft-card p-4" data-bs-ride="carousel">
-            <div class="carousel-inner text-center">
-              <!-- Slide: PHP -->
-              <div class="carousel-item active">
-                <div class="d-flex flex-column align-items-center gap-3">
-                  <div class="tech-figure">
-                    <span aria-hidden="true">PHP</span>
+      <!-- Carrusel de tecnologías (con logos) -->
+      <div class="grid place-items-center">
+        <div class="w-full lg:w-2/3">
+          <div class="bg-card/90 border border-mint/20 rounded-2xl p-6 shadow-soft">
+            <div class="relative">
+              <div id="techTrack" class="flex overflow-hidden snap-x snap-mandatory">
+                <!-- Slide PHP -->
+                <article class="min-w-full snap-center grid place-items-center gap-3 text-center px-4">
+                  <div class="h-28 w-28 rounded-xl border border-mint/30 bg-gradient-to-br from-teal/20 to-mint/10 grid place-items-center overflow-hidden">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/PHP-logo.svg/1920px-PHP-logo.svg.png" alt="PHP logo" class="max-h-20 object-contain" />
                   </div>
-                  <h3 class="h5 mb-1">PHP</h3>
-                </div>
-              </div>
-              <!-- Slide: MySQL -->
-              <div class="carousel-item">
-                <div class="d-flex flex-column align-items-center gap-3">
-                  <div class="tech-figure">
-                    <span aria-hidden="true">MySQL</span>
+                  <h3 class="text-lg font-semibold">PHP</h3>
+                  <p class="text-white/70">Backends livianos y mantenimiento de aplicaciones existentes.</p>
+                </article>
+                <!-- Slide MySQL -->
+                <article class="min-w-full snap-center grid place-items-center gap-3 text-center px-4">
+                  <div class="h-28 w-28 rounded-xl border border-mint/30 bg-gradient-to-br from-teal/20 to-mint/10 grid place-items-center overflow-hidden">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/d/dd/MySQL_logo.svg/1280px-MySQL_logo.svg.png" alt="MySQL logo" class="max-h-20 object-contain" />
                   </div>
-                  <h3 class="h5 mb-1">MySQL</h3>
-                </div>
-              </div>
-              <!-- Slide: SQL Server -->
-              <div class="carousel-item">
-                <div class="d-flex flex-column align-items-center gap-3">
-                  <div class="tech-figure">
-                    <span aria-hidden="true">SQLSrv</span>
+                  <h3 class="text-lg font-semibold">MySQL</h3>
+                  <p class="text-white/70">Modelado relacional, consultas y optimización.</p>
+                </article>
+                <!-- Slide SQL Server -->
+                <article class="min-w-full snap-center grid place-items-center gap-3 text-center px-4">
+                  <div class="h-28 w-28 rounded-xl border border-mint/30 bg-gradient-to-br from-teal/20 to-mint/10 grid place-items-center overflow-hidden">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Microsoft_SQL_Server_2025_icon.svg/800px-Microsoft_SQL_Server_2025_icon.svg.png" alt="SQL Server logo" class="max-h-20 object-contain" />
                   </div>
-                  <h3 class="h5 mb-1">SQL Server</h3>
-                </div>
-              </div>
-              <!-- Slide: PostgreSQL -->
-              <div class="carousel-item">
-                <div class="d-flex flex-column align-items-center gap-3">
-                  <div class="tech-figure">
-                    <span aria-hidden="true">PG</span>
+                  <h3 class="text-lg font-semibold">SQL Server</h3>
+                  <p class="text-white/70">Jobs, respaldos, restauraciones y tuning práctico.</p>
+                </article>
+                <!-- Slide PostgreSQL -->
+                <article class="min-w-full snap-center grid place-items-center gap-3 text-center px-4">
+                  <div class="h-28 w-28 rounded-xl border border-mint/30 bg-gradient-to-br from-teal/20 to-mint/10 grid place-items-center overflow-hidden">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Postgresql_elephant.svg/800px-Postgresql_elephant.svg.png" alt="PostgreSQL logo" class="max-h-20 object-contain" />
                   </div>
-                  <h3 class="h5 mb-1">PostgreSQL</h3>
-                </div>
-              </div>
-              <!-- Slide: C# -->
-              <div class="carousel-item">
-                <div class="d-flex flex-column align-items-center gap-3">
-                  <div class="tech-figure">
-                    <span aria-hidden="true">C#</span>
+                  <h3 class="text-lg font-semibold">PostgreSQL</h3>
+                  <p class="text-white/70">Extensiones, índices y monitoreo de performance.</p>
+                </article>
+                <!-- Slide C# -->
+                <article class="min-w-full snap-center grid place-items-center gap-3 text-center px-4">
+                  <div class="h-28 w-28 rounded-xl border border-mint/30 bg-gradient-to-br from-teal/20 to-mint/10 grid place-items-center overflow-hidden">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/C_Sharp_Logo_2023.svg/800px-C_Sharp_Logo_2023.svg.png" alt="C# logo" class="max-h-20 object-contain" />
                   </div>
-                  <h3 class="h5 mb-1">C#</h3>
-                </div>
-              </div>
-              <!-- Slide: Node.js -->
-              <div class="carousel-item">
-                <div class="d-flex flex-column align-items-center gap-3">
-                  <div class="tech-figure">
-                    <span aria-hidden="true">Node</span>
+                  <h3 class="text-lg font-semibold">C#</h3>
+                  <p class="text-white/70">Automatización y servicios para integraciones internas.</p>
+                </article>
+                <!-- Slide Node.js -->
+                <article class="min-w-full snap-center grid place-items-center gap-3 text-center px-4">
+                  <div class="h-28 w-28 rounded-xl border border-mint/30 bg-gradient-to-br from-teal/20 to-mint/10 grid place-items-center overflow-hidden">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/1280px-Node.js_logo.svg.png" alt="Node.js logo" class="max-h-20 object-contain" />
                   </div>
-                  <h3 class="h5 mb-1">Node.js</h3>
-                </div>
+                  <h3 class="text-lg font-semibold">Node.js</h3>
+                  <p class="text-white/70">APIs y tareas programadas orientadas a operaciones.</p>
+                </article>
               </div>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#techCarousel" data-bs-slide="prev" aria-label="Anterior">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Anterior</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#techCarousel" data-bs-slide="next" aria-label="Siguiente">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Siguiente</span>
-            </button>
-            <div class="carousel-indicators mt-3 position-static">
-              <button type="button" data-bs-target="#techCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="PHP"></button>
-              <button type="button" data-bs-target="#techCarousel" data-bs-slide-to="1" aria-label="MySQL"></button>
-              <button type="button" data-bs-target="#techCarousel" data-bs-slide-to="2" aria-label="SQL Server"></button>
-              <button type="button" data-bs-target="#techCarousel" data-bs-slide-to="3" aria-label="PostgreSQL"></button>
-              <button type="button" data-bs-target="#techCarousel" data-bs-slide-to="4" aria-label="C#"></button>
-              <button type="button" data-bs-target="#techCarousel" data-bs-slide-to="5" aria-label="Node.js"></button>
+              <!-- Controles carrusel -->
+              <div class="mt-4 flex items-center justify-between">
+                <button id="prevBtn" class="inline-flex items-center justify-center h-10 w-10 rounded-full border border-mint/30 hover:bg-textc/10" aria-label="Anterior">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+                </button>
+                <div class="flex gap-2" id="dots"></div>
+                <button id="nextBtn" class="inline-flex items-center justify-center h-10 w-10 rounded-full border border-mint/30 hover:bg-textc/10" aria-label="Siguiente">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M8.59 16.59 13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -280,32 +247,35 @@
   </section>
 
   <!-- Contacto -->
-  <section id="contacto">
-    <div class="container">
-      <div class="row justify-content-center mb-4">
-        <div class="col-lg-10">
-          <div class="d-flex align-items-center gap-2 mb-2">
-            <i class="bi bi-envelope-open text-warning"></i>
-            <span class="section-kicker">Contacto</span>
+  <section id="contacto" class="scroll-mt-24 py-12">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="grid place-items-center mb-6">
+        <div class="w-full lg:w-5/6">
+          <div class="flex items-center gap-2 mb-2">
+            <!-- icono sobre -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 13.5 2 6.75V18h20V6.75zM12 10 2 3h20z"/></svg>
+            <span class="uppercase tracking-[0.18rem] text-xs text-mint">Contacto</span>
           </div>
         </div>
       </div>
-      <div class="row justify-content-center">
-        <div class="col-lg-10">
-          <div class="soft-card p-4 p-md-5">
-            <ul class="list-unstyled contact-list m-0">
-              <li class="mb-3 d-flex align-items-start gap-3">
-                <i class="bi bi-envelope"></i>
+      <div class="grid place-items-center">
+        <div class="w-full lg:w-5/6">
+          <div class="bg-card/90 border border-mint/20 rounded-2xl p-6 md:p-8 shadow-soft">
+            <ul class="space-y-4 m-0">
+              <li class="flex items-start gap-3">
+                <!-- icono email -->
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 13.5 2 6.75V18h20V6.75zM12 10 2 3h20z"/></svg>
                 <div>
                   <strong>Correo</strong><br>
-                  <a href="mailto:rodrigocorvalandocs@gmail.com" rel="noopener">rodrigocorvalandocs@gmail.com</a>
+                  <a class="border-b border-dashed border-amber/60 hover:text-sand hover:border-sand" href="mailto:rodrigocorvalandocs@gmail.com" rel="noopener">rodrigocorvalandocs@gmail.com</a>
                 </div>
               </li>
-              <li class="mb-1 d-flex align-items-start gap-3">
-                <i class="bi bi-phone"></i>
+              <li class="flex items-start gap-3">
+                <!-- icono telefono -->
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.1.37 2.3.57 3.58.57a1 1 0 011 1V21a1 1 0 01-1 1C10.07 22 2 13.93 2 3a1 1 0 011-1h3.5a1 1 0 011 1c0 1.28.2 2.48.57 3.58a1 1 0 01-.24 1.01z"/></svg>
                 <div>
                   <strong>Teléfono</strong><br>
-                  <a href="tel:+56944362371" rel="noopener">+56 9 4436 2371</a>
+                  <a class="border-b border-dashed border-amber/60 hover:text-sand hover:border-sand" href="tel:+56944362371" rel="noopener">+56 9 4436 2371</a>
                 </div>
               </li>
             </ul>
@@ -316,18 +286,61 @@
   </section>
 
   <!-- Footer -->
-  <footer class="py-4 mt-4">
-    <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
-      <small>© <span id="year"></span> <span class="accent">Rodrigo Corvalán.</span> Todos los derechos reservados.</small>
+  <footer class="py-6 mt-4 border-t border-mint/20 text-mint/90">
+    <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-2">
+      <small>© <span id="year"></span> <span class="text-amber">Rodrigo Corvalán.</span> Todos los derechos reservados.</small>
     </div>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-
+  <!-- Scripts -->
   <script>
+    // Año dinámico
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    const scrollSpy = new bootstrap.ScrollSpy(document.body, { target: '#mainNav', offset: 90 });
+    // Nav mobile
+    const navToggle = document.getElementById('navToggle');
+    const navDrawer = document.getElementById('navDrawer');
+    const navItems = document.getElementById('navItems');
+    navToggle?.addEventListener('click', () => {
+      navDrawer.classList.toggle('hidden');
+    });
+
+    // Carrusel simple
+    const track = document.getElementById('techTrack');
+    const slides = Array.from(track.children);
+    const prev = document.getElementById('prevBtn');
+    const next = document.getElementById('nextBtn');
+    const dotsWrap = document.getElementById('dots');
+    let index = 0;
+
+    function goTo(i) {
+      index = (i + slides.length) % slides.length;
+      track.scrollTo({ left: slides[index].offsetLeft, behavior: 'smooth' });
+      updateDots();
+    }
+
+    function updateDots() {
+      dotsWrap.querySelectorAll('button').forEach((b, i) => {
+        b.classList.toggle('bg-amber', i === index);
+        b.classList.toggle('bg-textc/30', i !== index);
+      });
+    }
+
+    slides.forEach((_, i) => {
+      const b = document.createElement('button');
+      b.className = 'h-2.5 w-2.5 rounded-full bg-textc/30';
+      b.setAttribute('aria-label', 'Ir al slide ' + (i+1));
+      b.addEventListener('click', () => goTo(i));
+      dotsWrap.appendChild(b);
+    });
+    updateDots();
+
+    prev?.addEventListener('click', () => goTo(index - 1));
+    next?.addEventListener('click', () => goTo(index + 1));
+
+    // Auto-advance opcional
+    let auto = setInterval(() => goTo(index + 1), 6000);
+    track.addEventListener('pointerdown', () => clearInterval(auto));
   </script>
 </body>
 </html>
