@@ -11,7 +11,7 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- Tailwind CSS (CDN) -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -19,7 +19,7 @@
     tailwind.config = {
       theme: {
         extend: {
-          fontFamily: { sans: ['Inter', 'system-ui', 'Segoe UI', 'Roboto', 'sans-serif'] },
+          fontFamily: { sans: ['“Plus Jakarta Sans”', 'Plus Jakarta Sans', 'system-ui', 'Segoe UI', 'Roboto', 'sans-serif'] },
           colors: {
             ink: '#001219',
             deep: '#005F73',
@@ -46,9 +46,14 @@
   </script>
   <style>
     html { scroll-behavior: smooth; }
+    /* Ocultar barra de scroll (sin plugins) */
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .belt-clip { overflow-x: clip; }
+  html, body { overflow-x: hidden; }
   </style>
 </head>
-<body class="bg-ink text-textc leading-relaxed antialiased">
+<body class="bg-ink text-textc leading-relaxed antialiased overflow-x-hidden">
   <!-- Navbar -->
   <header class="sticky top-0 z-50 backdrop-blur-xs bg-ink/80 border-b border-mint/20">
     <nav class="max-w-6xl mx-auto flex items-center justify-between px-4 py-3">
@@ -174,77 +179,73 @@
         </div>
       </div>
 
-      <!-- Carrusel de tecnologías (con logos) -->
-      <div class="grid place-items-center">
-        <div class="w-full lg:w-2/3">
-          <div class="bg-card/90 border border-mint/20 rounded-2xl p-6 shadow-soft">
-            <div class="relative">
-              <div id="techTrack" class="flex overflow-hidden snap-x snap-mandatory">
-                <!-- Slide PHP -->
-                <article class="min-w-full snap-center grid place-items-center gap-3 text-center px-4">
-                  <div class="h-28 w-28 rounded-xl border border-mint/30 bg-gradient-to-br from-teal/20 to-mint/10 grid place-items-center overflow-hidden">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/PHP-logo.svg/1920px-PHP-logo.svg.png" alt="PHP logo" class="max-h-20 object-contain" />
-                  </div>
-                  <h3 class="text-lg font-semibold">PHP</h3>
-                  <p class="text-white/70">Backends livianos y mantenimiento de aplicaciones existentes.</p>
-                </article>
-                <!-- Slide MySQL -->
-                <article class="min-w-full snap-center grid place-items-center gap-3 text-center px-4">
-                  <div class="h-28 w-28 rounded-xl border border-mint/30 bg-gradient-to-br from-teal/20 to-mint/10 grid place-items-center overflow-hidden">
-                    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/d/dd/MySQL_logo.svg/1280px-MySQL_logo.svg.png" alt="MySQL logo" class="max-h-20 object-contain" />
-                  </div>
-                  <h3 class="text-lg font-semibold">MySQL</h3>
-                  <p class="text-white/70">Modelado relacional, consultas y optimización.</p>
-                </article>
-                <!-- Slide SQL Server -->
-                <article class="min-w-full snap-center grid place-items-center gap-3 text-center px-4">
-                  <div class="h-28 w-28 rounded-xl border border-mint/30 bg-gradient-to-br from-teal/20 to-mint/10 grid place-items-center overflow-hidden">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Microsoft_SQL_Server_2025_icon.svg/800px-Microsoft_SQL_Server_2025_icon.svg.png" alt="SQL Server logo" class="max-h-20 object-contain" />
-                  </div>
-                  <h3 class="text-lg font-semibold">SQL Server</h3>
-                  <p class="text-white/70">Jobs, respaldos, restauraciones y tuning práctico.</p>
-                </article>
-                <!-- Slide PostgreSQL -->
-                <article class="min-w-full snap-center grid place-items-center gap-3 text-center px-4">
-                  <div class="h-28 w-28 rounded-xl border border-mint/30 bg-gradient-to-br from-teal/20 to-mint/10 grid place-items-center overflow-hidden">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Postgresql_elephant.svg/800px-Postgresql_elephant.svg.png" alt="PostgreSQL logo" class="max-h-20 object-contain" />
-                  </div>
-                  <h3 class="text-lg font-semibold">PostgreSQL</h3>
-                  <p class="text-white/70">Extensiones, índices y monitoreo de performance.</p>
-                </article>
-                <!-- Slide C# -->
-                <article class="min-w-full snap-center grid place-items-center gap-3 text-center px-4">
-                  <div class="h-28 w-28 rounded-xl border border-mint/30 bg-gradient-to-br from-teal/20 to-mint/10 grid place-items-center overflow-hidden">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/C_Sharp_Logo_2023.svg/800px-C_Sharp_Logo_2023.svg.png" alt="C# logo" class="max-h-20 object-contain" />
-                  </div>
-                  <h3 class="text-lg font-semibold">C#</h3>
-                  <p class="text-white/70">Automatización y servicios para integraciones internas.</p>
-                </article>
-                <!-- Slide Node.js -->
-                <article class="min-w-full snap-center grid place-items-center gap-3 text-center px-4">
-                  <div class="h-28 w-28 rounded-xl border border-mint/30 bg-gradient-to-br from-teal/20 to-mint/10 grid place-items-center overflow-hidden">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/1280px-Node.js_logo.svg.png" alt="Node.js logo" class="max-h-20 object-contain" />
-                  </div>
-                  <h3 class="text-lg font-semibold">Node.js</h3>
-                  <p class="text-white/70">APIs y tareas programadas orientadas a operaciones.</p>
-                </article>
-              </div>
-              <!-- Controles carrusel -->
-              <div class="mt-4 flex items-center justify-between">
-                <button id="prevBtn" class="inline-flex items-center justify-center h-10 w-10 rounded-full border border-mint/30 hover:bg-textc/10" aria-label="Anterior">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
-                </button>
-                <div class="flex gap-2" id="dots"></div>
-                <button id="nextBtn" class="inline-flex items-center justify-center h-10 w-10 rounded-full border border-mint/30 hover:bg-textc/10" aria-label="Siguiente">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M8.59 16.59 13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg>
-                </button>
-              </div>
+      <!-- Carrusel de tecnologías (snap responsivo, auto-advance y drag) -->
+  <div class="grid place-items-center">
+    <div class="w-full lg:w-5/6">
+      <div class="bg-card/90 border border-mint/20 rounded-2xl p-6 shadow-soft">
+        <div class="relative" role="region" aria-label="Tecnologías (carrusel responsivo)">
+          <!-- Fades en los bordes -->
+          <div class="pointer-events-none absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-ink to-transparent rounded-l-2xl"></div>
+          <div class="pointer-events-none absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-ink to-transparent rounded-r-2xl"></div>
+
+          <!-- Viewport con snap -->
+          <div id="snapViewport" class="overflow-x-auto no-scrollbar snap-x snap-mandatory scroll-smooth cursor-grab active:cursor-grabbing" tabindex="0">
+            <div id="snapTrack" class="flex gap-6 items-stretch px-1">
+              <!-- PHP -->
+              <article class="snap-center min-w-[85%] sm:min-w-[60%] md:min-w-[48%] xl:min-w-[32%] 2xl:min-w-[28%] rounded-2xl border border-mint/20 bg-ink/40 p-5 grid place-items-center text-center">
+                <div class="h-28 w-28 rounded-xl border border-mint/30 bg-gradient-to-br from-teal/20 to-mint/10 grid place-items-center overflow-hidden">
+                  <img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/PHP-logo.svg/1920px-PHP-logo.svg.png" alt="PHP logo" class="max-h-20 object-contain" />
+                </div>
+                <h3 class="mt-3 text-base sm:text-lg font-semibold">PHP</h3>
+                <p class="mt-1 text-white/70 text-sm sm:text-base">Backends livianos y mantenimiento de aplicaciones existentes.</p>
+              </article>
+              <!-- MySQL -->
+              <article class="snap-center min-w-[85%] sm:min-w-[60%] md:min-w-[48%] xl:min-w-[32%] 2xl:min-w-[28%] rounded-2xl border border-mint/20 bg-ink/40 p-5 grid place-items-center text-center">
+                <div class="h-28 w-28 rounded-xl border border-mint/30 bg-gradient-to-br from-teal/20 to-mint/10 grid place-items-center overflow-hidden">
+                  <img loading="lazy" src="https://upload.wikimedia.org/wikipedia/en/thumb/d/dd/MySQL_logo.svg/1280px-MySQL_logo.svg.png" alt="MySQL logo" class="max-h-20 object-contain" />
+                </div>
+                <h3 class="mt-3 text-base sm:text-lg font-semibold">MySQL</h3>
+                <p class="mt-1 text-white/70 text-sm sm:text-base">Modelado relacional, consultas y optimización.</p>
+              </article>
+              <!-- SQL Server -->
+              <article class="snap-center min-w-[85%] sm:min-w-[60%] md:min-w-[48%] xl:min-w-[32%] 2xl:min-w-[28%] rounded-2xl border border-mint/20 bg-ink/40 p-5 grid place-items-center text-center">
+                <div class="h-28 w-28 rounded-xl border border-mint/30 bg-gradient-to-br from-teal/20 to-mint/10 grid place-items-center overflow-hidden">
+                  <img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Microsoft_SQL_Server_2025_icon.svg/800px-Microsoft_SQL_Server_2025_icon.svg.png" alt="SQL Server logo" class="max-h-20 object-contain" />
+                </div>
+                <h3 class="mt-3 text-base sm:text-lg font-semibold">SQL Server</h3>
+                <p class="mt-1 text-white/70 text-sm sm:text-base">Jobs, respaldos, restauraciones y tuning práctico.</p>
+              </article>
+              <!-- PostgreSQL -->
+              <article class="snap-center min-w-[85%] sm:min-w-[60%] md:min-w-[48%] xl:min-w-[32%] 2xl:min-w-[28%] rounded-2xl border border-mint/20 bg-ink/40 p-5 grid place-items-center text-center">
+                <div class="h-28 w-28 rounded-xl border border-mint/30 bg-gradient-to-br from-teal/20 to-mint/10 grid place-items-center overflow-hidden">
+                  <img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Postgresql_elephant.svg/800px-Postgresql_elephant.svg.png" alt="PostgreSQL logo" class="max-h-20 object-contain" />
+                </div>
+                <h3 class="mt-3 text-base sm:text-lg font-semibold">PostgreSQL</h3>
+                <p class="mt-1 text-white/70 text-sm sm:text-base">Extensiones, índices y monitoreo de performance.</p>
+              </article>
+              <!-- C# -->
+              <article class="snap-center min-w-[85%] sm:min-w-[60%] md:min-w-[48%] xl:min-w-[32%] 2xl:min-w-[28%] rounded-2xl border border-mint/20 bg-ink/40 p-5 grid place-items-center text-center">
+                <div class="h-28 w-28 rounded-xl border border-mint/30 bg-gradient-to-br from-teal/20 to-mint/10 grid place-items-center overflow-hidden">
+                  <img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/C_Sharp_Logo_2023.svg/800px-C_Sharp_Logo_2023.svg.png" alt="C# logo" class="max-h-20 object-contain" />
+                </div>
+                <h3 class="mt-3 text-base sm:text-lg font-semibold">C#</h3>
+                <p class="mt-1 text-white/70 text-sm sm:text-base">Automatización y servicios para integraciones internas.</p>
+              </article>
+              <!-- Node.js -->
+              <article class="snap-center min-w-[85%] sm:min-w-[60%] md:min-w-[48%] xl:min-w-[32%] 2xl:min-w-[28%] rounded-2xl border border-mint/20 bg-ink/40 p-5 grid place-items-center text-center">
+                <div class="h-28 w-28 rounded-xl border border-mint/30 bg-gradient-to-br from-teal/20 to-mint/10 grid place-items-center overflow-hidden">
+                  <img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/1280px-Node.js_logo.svg.png" alt="Node.js logo" class="max-h-20 object-contain" />
+                </div>
+                <h3 class="mt-3 text-base sm:text-lg font-semibold">Node.js</h3>
+                <p class="mt-1 text-white/70 text-sm sm:text-base">APIs y tareas programadas orientadas a operaciones.</p>
+              </article>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
   <!-- Contacto -->
   <section id="contacto" class="scroll-mt-24 py-12">
@@ -305,42 +306,53 @@
       navDrawer.classList.toggle('hidden');
     });
 
-    // Carrusel simple
-    const track = document.getElementById('techTrack');
-    const slides = Array.from(track.children);
-    const prev = document.getElementById('prevBtn');
-    const next = document.getElementById('nextBtn');
-    const dotsWrap = document.getElementById('dots');
-    let index = 0;
+    // Carrusel responsivo con SNAP + auto-advance y drag (sin librerías)
+    (function(){
+      const viewport = document.getElementById('snapViewport');
+      const track = document.getElementById('snapTrack');
+      if (!viewport || !track) return;
 
-    function goTo(i) {
-      index = (i + slides.length) % slides.length;
-      track.scrollTo({ left: slides[index].offsetLeft, behavior: 'smooth' });
-      updateDots();
-    }
+      let index = 0;
+      const cards = Array.from(track.children);
+      const getGap = () => parseFloat(getComputedStyle(track).gap || 24);
+      const cardSpan = () => cards[0].offsetWidth + getGap();
 
-    function updateDots() {
-      dotsWrap.querySelectorAll('button').forEach((b, i) => {
-        b.classList.toggle('bg-amber', i === index);
-        b.classList.toggle('bg-textc/30', i !== index);
-      });
-    }
+      function to(i){
+        index = (i + cards.length) % cards.length;
+        const x = index * cardSpan();
+        viewport.scrollTo({ left: x, behavior: 'smooth' });
+      }
 
-    slides.forEach((_, i) => {
-      const b = document.createElement('button');
-      b.className = 'h-2.5 w-2.5 rounded-full bg-textc/30';
-      b.setAttribute('aria-label', 'Ir al slide ' + (i+1));
-      b.addEventListener('click', () => goTo(i));
-      dotsWrap.appendChild(b);
-    });
-    updateDots();
+      // Auto-advance cada 4.5s
+      let timer;
+      function start(){ stop(); timer = setInterval(()=>to(index+1), 4500); }
+      function stop(){ if (timer) clearInterval(timer); }
 
-    prev?.addEventListener('click', () => goTo(index - 1));
-    next?.addEventListener('click', () => goTo(index + 1));
+      // Pausar en hover/drag
+      viewport.addEventListener('mouseenter', stop);
+      viewport.addEventListener('mouseleave', start);
 
-    // Auto-advance opcional
-    let auto = setInterval(() => goTo(index + 1), 6000);
-    track.addEventListener('pointerdown', () => clearInterval(auto));
+      // Drag nativo
+      let isDown=false, startX=0, startLeft=0; 
+      viewport.addEventListener('pointerdown', (e)=>{ isDown=true; startX=e.clientX; startLeft=viewport.scrollLeft; viewport.setPointerCapture(e.pointerId); stop(); });
+      viewport.addEventListener('pointermove', (e)=>{ if(!isDown) return; const dx=e.clientX-startX; viewport.scrollLeft = startLeft - dx; });
+      viewport.addEventListener('pointerup', (e)=>{ isDown=false; viewport.releasePointerCapture(e.pointerId); start(); snapNearest(); });
+      viewport.addEventListener('pointercancel', ()=>{ isDown=false; start(); snapNearest(); });
+
+      // Ajustar al snap más cercano tras drag
+      function snapNearest(){
+        const i = Math.round(viewport.scrollLeft / cardSpan());
+        to(i);
+      }
+
+      // Resize recalcula anchos y centra el actual
+      let rt; window.addEventListener('resize', ()=>{ clearTimeout(rt); rt=setTimeout(()=>to(index), 150); });
+
+      // Inicio centrado (1ª tarjeta) y autoplay
+      to(0); start();
+    })();
   </script>
 </body>
 </html>
+
+
